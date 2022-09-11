@@ -42,7 +42,7 @@
 						<button on:click={twitterAuth}
 							class="w-full text-center py-3 my-3 border flex space-x-2 items-center 
 							justify-center border-slate-200 rounded-lg text-blue-400 
-							hover:border-orange-200 hover:text-orange-200 hover:shadow transition duration-150"
+							hover:border-green-600 hover:text-green-400 hover:shadow transition duration-150"
 						>
 							<svg
 								class="mr-2 -ml-1 w-5 h-5 "

@@ -1,11 +1,12 @@
+
 <script>
     import { createEventDispatcher } from "svelte";
-  
+
     const dispatch = createEventDispatcher();
   
     export let title;
     export let audio;
-    
+  
   </script>
   
   <div class="flex flex-row">
@@ -18,7 +19,8 @@
       ><ion-icon class="h-5 w-5 " name="close-circle-outline"></ion-icon></button
     >
   </div>
-  
+
+
  <style>
   .player{
     background-color: #222;

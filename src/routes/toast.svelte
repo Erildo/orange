@@ -1,17 +1,18 @@
 <script context="module">
-	export function showToast() {
-		document.getElementById('myToast').classList.remove('hidden');
+	export function showToast(id) {
+		document.getElementById(id).classList.remove('hidden');
 		setTimeout(function () {
-			document.getElementById('myToast').classList.add('hidden');
+			document.getElementById(id).classList.add('hidden');
 		}, 1000);
 	}
 </script>
 
 <script>
 	export let text = '';
+	export let id = '';
 </script>
 
-<div id="myToast" class="ml-[500px] sm:w-3/4 md:w-2/4 fixed hidden inset-x-0 top-10" role="alert">
+<div id={id} class="ml-[500px] sm:w-3/4 md:w-2/4 fixed hidden inset-x-0 top-10" role="alert">
 	<div
 		id="toast-simple"
 		class="flex items-center p-4 space-x-4 w-full max-w-xs text-white bg-gray-700 rounded-lg divide-x divide-gray-700 shadow  space-x "

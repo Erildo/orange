@@ -3,7 +3,7 @@
 	import { user } from '$lib/sessionStore';
 	import { supabase } from '$lib/supabaseClient';
 	import Welcome from './welcome.svelte';
-	import Main from './main.svelte';
+	import HomePage from './homePage.svelte';
 
 	user.set(supabase.auth.user());
 
@@ -18,7 +18,7 @@
 
 <div class="md:w-full md:h-screen absolute inset-0">
 	{#if $user}
-		<Main />
+		<HomePage />
 	{:else}
 		<Welcome />
 	{/if}

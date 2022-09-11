@@ -2,43 +2,52 @@
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
 	import { supabase } from '$lib/supabaseClient';
-	import Toast , {showToast }from './toast.svelte';
+	import Toast, { showToast } from './toast.svelte';
+	import SmNav from './smNav.svelte';
+	import Main from './main.svelte';
+	import Profile from './profile.svelte';
 
-	
-	let showCreate = false;
+	let showCreate;
 	const sessions = supabase.auth.session();
 	const user = supabase.auth.user();
-
+	let msg = '';
 	const user_name = sessions.user.identities[0].identity_data.user_name;
 	const name = sessions.user.identities[0].identity_data.name;
 	const picture = sessions.user.identities[0].identity_data.picture;
 	let loading = false;
 	let elements = [
-		{ icon: 'planet-outline', name: 'Home', page: 'Profile' },
-		{ icon: 'compass-outline', name: 'Explore', page: 'Connections' },
-		{ icon: 'notifications-outline', name: 'Notifications', page: 'Startups' },
-		{ icon: 'chatbubbles-outline', name: 'Messages', page: 'Exchange' },
-		{ icon: 'person-outline', name: 'Profile', page: 'Settings' }
+		{ icon: 'planet-outline', name: 'Home', component: Main },
+		{ icon: 'compass-outline', name: 'Explore', component: Main },
+		{ icon: 'notifications-outline', name: 'Notifications', component: Main },
+		{ icon: 'chatbubbles-outline', name: 'Messages', component: Main },
+		{ icon: 'person-outline', name: 'Profile', component: Profile }
 	];
-
 	function sleep(ms) {
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	}
 	async function getProfile() {
 		try {
-			let { data, error, status } = await supabase.from('profiles').select('*').eq('p_id', user.id);
+			let { data, error, status } = await supabase
+				.from('profiles')
+				.select('p_id')
+				.eq('p_id', user.id);
 
 			if (error) throw error;
-			showCreate = true;
+			if (data.length === 0) {
+				showCreate = false;
+				await sleep(1000);
+				loading = true;
+				await createAccount();
+				await sleep(2000);
+				loading = false;
+				showCreate = true;
+			}
 		} catch (error) {
-			showCreate = false;
+			console.log(error);
 		}
 	}
 	async function createAccount() {
 		try {
-			loading = true;
-			await sleep(2000);
-
 			const { data, error } = await supabase.from('profiles').insert([
 				{
 					p_id: user.id,
@@ -48,16 +57,15 @@
 				}
 			]);
 			if (error) throw error;
-			showCreate = true;
 		} catch (error) {
-			alert(error);
-		} finally {
-			loading = false;
+			// alert(error.message);
 		}
 	}
-
+	let id = 'first';
 	async function signout() {
-		showToast();
+		msg = 'Goodbey and see you soon!';
+		showToast(id);
+
 		await sleep(1000);
 
 		try {
@@ -68,12 +76,16 @@
 			// console.log(error);
 		}
 	}
+
+	let screenWidth;
+
+	export let mainPage = Main;
 </script>
 
-<Toast text="Goodbey and see you soon!" />
+<Toast bind:id bind:text={msg} />
 
-<div style="width: 275px;">
-	<div class="overflow-y-auto fixed h-screen pr-3" style="width: 275px;">
+<div style="width: 300px; " class="hidden md:block ">
+	<div class="overflow-y-auto fixed h-screen pr-3" style="width: 300px;">
 		<!--Logo-->
 		<svg viewBox="0 0 24 24" class="h-8 w-8 text-white ml-3" fill="currentColor">
 			<g>
@@ -85,13 +97,16 @@
 
 		<!-- Nav-->
 		<nav class="mt-5 px-2">
-			{#each elements as { icon, name, page }, i}
-				<a
+			{#each elements as element, i}
+				<a	value={element.component}
+					on:click={() => {
+						mainPage = element.component;
+					}}
 					href="./"
 					class=" mt- 1 group flex items-center px-2 py-2 text-base leading-10  font-roboto rounded-full bg-gray-800 text-white hover:text-blue-300"
 				>
-					<ion-icon class="mr-2 h-6 w-6 " name={icon} />
-					{name}
+					<ion-icon class="mr-2 h-6 w-6 " name={element.icon} />
+					{element.name}
 				</a>
 			{/each}
 
@@ -121,20 +136,10 @@
 							<span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Catsy</span>
 
 							{#if loading == true}
-								<div class="mb-2 text-sm font-normal">
-									Thank you and enjoy it!
-									<img class="w-14 h-14 " src="/src/images/bean.svg" alt="loading" />
-								</div>
+								<div class="mb-2 text-sm font-normal">Thank you and enjoy it!</div>
 							{:else}
 								<div class="mb-2 text-sm font-normal">
-									Hi {name}, You have not created an account yet,
-									<a
-										href="./"
-										on:click={createAccount}
-										class="font-medium text-orange-600 underline dark:text-blue-500 hover:no-underline"
-										>create it</a
-									>
-									<br />it takes 0.5 seconds...
+									Hi {name},<br /> We are creating your account!
 								</div>
 							{/if}
 						</div>
@@ -150,8 +155,12 @@
 						<div class="ml-3">
 							<div class="flex flex-row mb-1">
 								<p class="text-base leading-6 font-medium text-white">{name}</p>
-								<button class="text-white hover:text-blue-500 ml-7">
-									<ion-icon on:click={signout} class=" h-6 w-6 " name="log-out-outline" />
+								<button class="text-white  ml-7">
+									<ion-icon
+										on:click={signout}
+										class=" h-6 w-6 opacity-50 hover:opacity-100 "
+										name="log-out-outline"
+									/>
 								</button>
 							</div>
 							<p
@@ -166,3 +175,7 @@
 		</div>
 	</div>
 </div>
+<svelte:window bind:innerWidth={screenWidth} />
+{#if screenWidth < 770}
+	<SmNav />
+{/if}

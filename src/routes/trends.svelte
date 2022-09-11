@@ -50,8 +50,8 @@
                             placeholder="Search..."
                             required
                         />
-                        <button type="button" class="flex absolute inset-y-0 right-0 items-center pr-3">
-                            <ion-icon class="h-4 w-4" name="mic-sharp" />
+                        <button type="button" class="flex absolute rounded-full bg-gray-500 w-8 h-8 inset-y-0 right-0 items-center ">
+                            <ion-icon class="h-6 w-6 ml-1" name="mic-outline" />
                         </button>
                     </div>
                 </form>
@@ -60,7 +60,7 @@
             <div class="max-w-sm rounded-lg bg-dim-700 overflow-hidden shadow-lg m-4">
                 <div class="flex">
                     <div class="flex-1 m-2">
-                        <h2 class="px-4 py-2 text-xl w-48 font-semibold text-white">Germany trends</h2>
+                        <h2 class="px-4 py-2 text-xl w-48 font-semibold text-white">World trends</h2>
                     </div>
                     <div class="flex-1 px-4 py-2 m-2">
                         <a
