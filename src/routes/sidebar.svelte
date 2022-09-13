@@ -1,6 +1,5 @@
 <script>
 	import { goto } from '$app/navigation';
-	// import { suser } from '../routes/stores.js';
 	import { supabase } from '$lib/supabaseClient';
 	import Toast, { showToast } from './toast.svelte';
 	import SmNav from './smNav.svelte';
@@ -10,12 +9,17 @@
 	let showCreate;
 	let user_name, name, picture;
 	let msg = '';
+
 	const sessions = supabase.auth.session();
 	const user = supabase.auth.user();
-	// console.log(suser)
+
+	if(showCreate = false){
+	
 	user_name = sessions.user.identities[0].identity_data.user_name;
 	name = sessions.user.identities[0].identity_data.name;
 	picture = sessions.user.identities[0].identity_data.picture;
+	}
+
 	let loading = false;
 	let elements = [
 		{ icon: 'planet-outline', name: 'Home', component: Main },
@@ -31,7 +35,7 @@
 		try {
 			let { data, error, status } = await supabase
 				.from('profiles')
-				.select('p_id')
+				.select('*')
 				.eq('p_id', user.id);
 
 			if (error) throw error;
@@ -43,6 +47,11 @@
 				await sleep(2000);
 				loading = false;
 				showCreate = true;
+			} else{
+				showCreate = true;
+				user_name = data[0].user_name 
+				name = data[0].name
+				picture = data[0].picture
 			}
 		} catch (error) {
 			console.log(error);
