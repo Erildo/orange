@@ -15,6 +15,7 @@
 	const user_name = sessions.user.identities[0].identity_data.user_name;
 	import EmojiPicker from 'svelte-emoji-picker';
 	import Modal from './modal.svelte';
+import Testing from './testing.svelte';
 	let showModal = false;
 
 	let tweet = '';
@@ -188,7 +189,6 @@
 	}
 	
 </script>
-
 <Toasting bind:id bind:text={toastMessage} />
 
 <main class="min-h-screen">
@@ -219,7 +219,7 @@
 					<div class="flex-1 px-2 pt-2 mt-2 dark">
 						{#if status === true}
 							<span class="text-blue-300">Recording...</span>
-							<Wave />
+							<!-- <Wave /> -->
 						{/if}
 						<textarea
 							rows="3"
@@ -290,24 +290,27 @@
 								</a>
 							</div>
 
-							<div class="flex-1 text-center py-2 m-2">
-								{#if status === false}
+							<div class="flex-1 text-center mt-4 m-2">
+								<div class="wrapper">
+									{#if status === true}
+										<div class="circle-wrapper">
+											<div class="circle2" />
+										</div>
+
+										<div class="circle-wrapper">
+											<div class="circle1" />
+										</div>
+									{/if}
 									<a
+										class="btn hover:text-blue-300 {status === false
+											? 'text-blue-400 '
+											: 'text-blue-300'} "
 										href="./"
-										on:click={record}
-										class="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-gray-800 hover:text-blue-300"
+										on:click={status === false ? record : stop}
 									>
 										<ion-icon class="h-7 w-7" name="mic-outline" />
 									</a>
-								{:else}
-									<a
-										href="./"
-										on:click={stop}
-										class="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-gray-800 hover:text-blue-300"
-									>
-										<ion-icon class="h-7 w-7" name="stop-circle-outline" />
-									</a>
-								{/if}
+								</div>
 							</div>
 							<div class="flex-1 text-center py-2 m-2" />
 						</div>
@@ -360,16 +363,14 @@
 								</p>
 								{#if post.po_storage}
 									<div class="md:flex-shrink pr-6 pt-3">
-										
-											<Image path = {post.po_storage} user_name = {post.user_name}/>
-										
+										<Image path={post.po_storage} user_name={post.user_name} />
 									</div>
 								{/if}
 								<div class="flex items-center py-4">
-									<div
+									<div 
 										class="font-roboto flex-1 flex items-center text-xs text-gray-400 hover:text-blue-400 transition duration-350 ease-in-out"
 									>
-										<ion-icon class="h-5 w-5 mr-2" name="chatbubble-outline" />
+									<a href="./post-{post.po_uid}"><ion-icon  class="h-5 w-5 mr-2" name="chatbubble-outline" /> </a>
 										12.3 k
 									</div>
 									<div
@@ -395,7 +396,74 @@
 						</article>
 					{/each}
 				</li>
+				<li>
+					<article>
+						<!-- <Testing/> -->
+					</article>
+				</li>
+				
 			</ul>
 		</section>
 	</div>
 </main>
+
+<style>
+	.wrapper {
+		position: relative;
+
+		/*   background-color:red; */
+	}
+
+	.circle-wrapper {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.circle1 {
+		z-index: 0;
+		width: 100px;
+		height: 100px;
+		background: #bbadef;
+		border-radius: 100px;
+		animation: pulse 2s ease both infinite;
+	}
+
+	.circle2 {
+		z-index: 0;
+		width: 120px;
+		height: 120px;
+		background: #a596d8;
+		border-radius: 140px;
+		opacity: 0.6;
+		animation: pulse 2s ease both infinite;
+		animation-delay: 200ms;
+	}
+
+	@keyframes pulse {
+		0% {
+			transform: scale(0.5);
+			opacity: 0;
+		}
+		20% {
+			transform: scale(1);
+			opacity: 0.3;
+		}
+
+		50% {
+			transform: scale(0.5);
+			opacity: 0;
+		}
+
+		70% {
+			transform: scale(1);
+			opacity: 0.3;
+		}
+
+		100% {
+			transform: scale(0.5);
+			opacity: 0;
+		}
+	}
+</style>

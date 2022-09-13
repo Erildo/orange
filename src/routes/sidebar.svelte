@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { session } from '$app/stores';
+	// import { suser } from '../routes/stores.js';
 	import { supabase } from '$lib/supabaseClient';
 	import Toast, { showToast } from './toast.svelte';
 	import SmNav from './smNav.svelte';
@@ -8,12 +8,14 @@
 	import Profile from './profile.svelte';
 
 	let showCreate;
+	let user_name, name, picture;
+	let msg = '';
 	const sessions = supabase.auth.session();
 	const user = supabase.auth.user();
-	let msg = '';
-	const user_name = sessions.user.identities[0].identity_data.user_name;
-	const name = sessions.user.identities[0].identity_data.name;
-	const picture = sessions.user.identities[0].identity_data.picture;
+	// console.log(suser)
+	user_name = sessions.user.identities[0].identity_data.user_name;
+	name = sessions.user.identities[0].identity_data.name;
+	picture = sessions.user.identities[0].identity_data.picture;
 	let loading = false;
 	let elements = [
 		{ icon: 'planet-outline', name: 'Home', component: Main },
@@ -98,7 +100,8 @@
 		<!-- Nav-->
 		<nav class="mt-5 px-2">
 			{#each elements as element, i}
-				<a	value={element.component}
+				<a
+					value={element.component}
 					on:click={() => {
 						mainPage = element.component;
 					}}
