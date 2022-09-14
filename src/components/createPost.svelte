@@ -163,6 +163,12 @@
 	function deleteRecording(item) {
 		recordings = recordings.filter((i) => i !== item);
 	}
+	function blueColor() {
+		tweet = tweet.replace(/(^|\s)(#\w+)/g, " <a href=#>$2</a>").replace("<br>", ""); 
+
+		var savedSel = sel.saveCharacterRanges(tweet);
+          tweet = sel.restoreCharacterRanges(this, savedSel);
+	}
 </script>
 
 <Toasting bind:id bind:text={toastMessage} />
@@ -175,7 +181,19 @@
 		{#if status === true}
 			<span class="text-blue-300">Recording...</span>
 		{/if}
-		<textarea
+		<div
+			contenteditable="true"
+			bind:innerHTML={tweet}
+			on:input={blueColor}
+			class="block p-2.5 w-full h-24
+					rounded-lg border text-white focus:outline-none focus:ring
+					bg-gray-700 border-gray-600 placeholder-gray-400
+					hover:border-blue-600"
+			placeholder="What's happening..."
+			maxlength="200"
+		/>
+
+		<!-- <textarea
 			rows="3"
 			bind:value={tweet}
 			class="block p-2.5 w-full 
@@ -184,7 +202,7 @@
             hover:border-blue-600"
 			placeholder="What's happening..."
 			maxlength="200"
-		/>
+		/> -->
 		{#if avatar}
 			<div class="relative">
 				<img class="w-full" src={avatar} alt="uploaded" />

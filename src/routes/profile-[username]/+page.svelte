@@ -158,7 +158,7 @@
 					<!--second tweet-->
 					<article class="hover:bg-gray-800 transition duration-350 ease-in-out">
 						<div class="flex flex-shrink-0 p-4 pb-0">
-							<a href="#" class="flex-shrink-0 group block">
+							<a href="./" class="flex-shrink-0 group block">
 								<div class="flex items-center">
 									<div>
 										<img
@@ -183,12 +183,12 @@
 
 						<div class="pl-16">
 							<p class="text-base width-auto font-medium text-white flex-shrink">
-								Day 07 of the challenge <a href="#" class="text-blue-400">#100DaysOfCode</a>
+								Day 07 of the challenge <a href="./" class="text-blue-400">#100DaysOfCode</a>
 								I was wondering what I can do with
-								<a href="#" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
+								<a href="./" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
 								UI using Tailwind and so far it looks so promising. I will post my code after
 								completion. [07/100]
-								<a href="#" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
+								<a href="./" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
 							</p>
 
 							<div class="md:flex-shrink pr-6 pt-3">
@@ -264,7 +264,7 @@
 					<!--second tweet-->
 					<article class="hover:bg-gray-800 transition duration-350 ease-in-out">
 						<div class="flex flex-shrink-0 p-4 pb-0">
-							<a href="#" class="flex-shrink-0 group block">
+							<a href="./" class="flex-shrink-0 group block">
 								<div class="flex items-center">
 									<div>
 										<img
@@ -289,12 +289,12 @@
 
 						<div class="pl-16">
 							<p class="text-base width-auto font-medium text-white flex-shrink">
-								Day 07 of the challenge <a href="#" class="text-blue-400">#100DaysOfCode</a>
+								Day 07 of the challenge <a href="./" class="text-blue-400">#100DaysOfCode</a>
 								I was wondering what I can do with
-								<a href="#" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
+								<a href="./" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
 								UI using Tailwind and so far it looks so promising. I will post my code after
 								completion. [07/100]
-								<a href="#" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
+								<a href="./" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
 							</p>
 
 							<div class="md:flex-shrink pr-6 pt-3">
@@ -370,7 +370,7 @@
 					<!--second tweet-->
 					<article class="hover:bg-gray-800 transition duration-350 ease-in-out">
 						<div class="flex flex-shrink-0 p-4 pb-0">
-							<a href="#" class="flex-shrink-0 group block">
+							<a href="./" class="flex-shrink-0 group block">
 								<div class="flex items-center">
 									<div>
 										<img
@@ -395,12 +395,12 @@
 
 						<div class="pl-16">
 							<p class="text-base width-auto font-medium text-white flex-shrink">
-								Day 07 of the challenge <a href="#" class="text-blue-400">#100DaysOfCode</a>
+								Day 07 of the challenge <a href="./" class="text-blue-400">#100DaysOfCode</a>
 								I was wondering what I can do with
-								<a href="#" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
+								<a href="./" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
 								UI using Tailwind and so far it looks so promising. I will post my code after
 								completion. [07/100]
-								<a href="#" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
+								<a href="./" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
 							</p>
 
 							<div class="md:flex-shrink pr-6 pt-3">
@@ -476,7 +476,7 @@
 					<!--second tweet-->
 					<article class="hover:bg-gray-800 transition duration-350 ease-in-out">
 						<div class="flex flex-shrink-0 p-4 pb-0">
-							<a href="#" class="flex-shrink-0 group block">
+							<a href="./" class="flex-shrink-0 group block">
 								<div class="flex items-center">
 									<div>
 										<img
@@ -501,12 +501,12 @@
 
 						<div class="pl-16">
 							<p class="text-base width-auto font-medium text-white flex-shrink">
-								Day 07 of the challenge <a href="#" class="text-blue-400">#100DaysOfCode</a>
+								Day 07 of the challenge <a href="./" class="text-blue-400">#100DaysOfCode</a>
 								I was wondering what I can do with
-								<a href="#" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
+								<a href="./" class="text-blue-400">#tailwindcss</a>, so just started building Twitter
 								UI using Tailwind and so far it looks so promising. I will post my code after
 								completion. [07/100]
-								<a href="#" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
+								<a href="./" class="text-blue-400"> #WomenWhoCode #CodeNewbie</a>
 							</p>
 
 							<div class="md:flex-shrink pr-6 pt-3">
