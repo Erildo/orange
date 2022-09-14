@@ -1,11 +1,13 @@
 <script>
-  	import { page } from '$app/stores';
-    import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	const username = $page.params.username;
 
-  const goSomeWhereBack = () => {
-    goto($page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/')));
-}
+	const goSomeWhereBack = () => {
+		goto($page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/')));
+	};
 </script>
+
 <main class="min-h-screen">
 	<div class="flex w-full">
 		<section class="sm:w-[200px] md:w-[600px] border border-y-0 border-gray-800">
@@ -15,7 +17,7 @@
 				<div class="flex justify-start">
 					<div class="px-4 py-2 mx-2">
 						<a
-            on:click={goSomeWhereBack}
+							on:click={goSomeWhereBack}
 							href="./"
 							class=" text-2xl font-medium rounded-full text-blue-400 hover:bg-gray-800 hover:text-blue-300 float-right"
 						>
@@ -578,7 +580,5 @@
 				</li>
 			</ul>
 		</section>
-
-		
 	</div>
 </main>

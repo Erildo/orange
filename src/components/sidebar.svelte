@@ -1,8 +1,10 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { supabase } from '$lib/supabaseClient';
-	import Toast, { showToast } from '../routes/toast.svelte';
-	import SmNav from '../routes/smNav.svelte';
+
+	import Toast, { showToast } from '../components/toast.svelte';
+	import SmNav from '../components/smNav.svelte';
+	import { element } from 'svelte/internal';
 	
 	let showCreate;
 	let user_name, name, picture;
@@ -20,7 +22,7 @@
 
 	let loading = false;
 	let elements = [
-		{ icon: 'planet-outline', name: 'Home', component: 'main' },
+		{ icon: 'planet-outline', name: 'Home', component: './' },
 		{ icon: 'compass-outline', name: 'Explore', component: 'Main' },
 		{ icon: 'notifications-outline', name: 'Notifications', component: 'Main' },
 		{ icon: 'chatbubbles-outline', name: 'Messages', component: 'Main' },
@@ -109,7 +111,7 @@
 			{#each elements as element, i}
 				<a
 					value={element.component}
-					href="./home/{element.component}"
+					href="./{ element.component === "profile" ? 'profile-'+ user_name : element.component }"
 					class=" mt- 1 group flex items-center px-2 py-2 text-base leading-10  font-roboto rounded-full bg-gray-800 text-white hover:text-blue-300"
 				>
 					<ion-icon class="mr-2 h-6 w-6 " name={element.icon} />

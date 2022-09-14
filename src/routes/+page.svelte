@@ -1,9 +1,9 @@
 <script>
 	// @ts-nocheck
 	import { user } from '$lib/sessionStore';
-	import Home from './home/+page.svelte';
 	import Welcome from './welcome/+page.svelte';
 	import { supabase } from '$lib/supabaseClient';
+	import Main from './main.svelte';
 
 	user.set(supabase.auth.user());
 
@@ -18,10 +18,9 @@
 	
 </script>
 
-<div class="md:w-full md:h-screen absolute inset-0">
 	{#if $user}
-	<Home/>
+	<Main/>
 	{:else}
 		<Welcome/>
 	{/if}
-</div>
+

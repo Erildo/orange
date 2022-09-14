@@ -3,10 +3,10 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 
-	import Image from '../../image.svelte';
 	import { supabase } from '$lib/supabaseClient';
 	import { user } from '$lib/sessionStore'
 	import Comment from './_comment.svelte';
+	import Image from '../../components/image.svelte';
 	const id = $page.params.id;
 	let thisPage;
 	let postArray = [];

@@ -3,7 +3,7 @@
 	import { supabase } from '$lib/supabaseClient';
 	let loading = false;
 	let error;
-	export let data;
+	
 	async function twitterAuth() {
 		try {
 			loading = true;
