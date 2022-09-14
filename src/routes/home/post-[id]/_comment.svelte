@@ -1,22 +1,24 @@
-<script>
+<!-- <script>
 	import { supabase } from '$lib/supabaseClient';
-	import Toasting, { showToast } from './toast.svelte';
+	import { user } from '$lib/sessionStore';
+	import Toasting, { showToast } from '../../toast.svelte';
 	import { createEventDispatcher } from 'svelte';
-	import Audiolist from './audiolist.svelte';
-	import { getUser } from './user';
+	import Audiolist from '../../audiolist.svelte';
+	import { getUser } from '../../user';
 	import EmojiPicker from 'svelte-emoji-picker';
-	import Modal from './modal.svelte';
+	import Modal from '../../modal.svelte';
 
 	const dispatch = createEventDispatcher();
 	let id = 'second';
 	let promise = Promise.resolve([]);
 	let user_name, picture;
-	const user = supabase.auth.user();
-	promise = getUser(user.id);
-	promise.then((value) => {
-		user_name = value[0].user_name;
-		picture = value[0].picture;
-	});
+	// const user = supabase.auth.user();
+    console.log(user)
+	// promise = getUser(user.id);
+	// promise.then((value) => {
+	// 	user_name = value[0].user_name;
+	// 	picture = value[0].picture;
+	// });
 
 	let showModal = false;
 	let tweet = '';
@@ -163,8 +165,8 @@
 	function deleteRecording(item) {
 		recordings = recordings.filter((i) => i !== item);
 	}
-</script>
-
+</script> -->
+<!-- 
 <Toasting bind:id bind:text={toastMessage} />
 
 <div class="flex">
@@ -205,7 +207,7 @@
 		{/if}
 	</div>
 </div>
-<!--middle creat tweet below icons-->
+
 <div class="flex">
 	<div class="w-10" />
 
@@ -273,7 +275,7 @@
 			type="button"
 			on:click={post}
 			class="float-right text-white mt-5 mr-8 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
-			>Tweet</button
+			>Comment</button
 		>
 	</div>
 </div>
@@ -339,4 +341,4 @@
 			opacity: 0;
 		}
 	}
-</style>
+</style> -->

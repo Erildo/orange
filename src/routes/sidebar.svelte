@@ -1,11 +1,9 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { supabase } from '$lib/supabaseClient';
-	import Toast, { showToast } from './toast.svelte';
-	import SmNav from './smNav.svelte';
-	import Main from './main.svelte';
-	import Profile from './profile.svelte';
-
+	import Toast, { showToast } from '../routes/toast.svelte';
+	import SmNav from '../routes/smNav.svelte';
+	
 	let showCreate;
 	let user_name, name, picture;
 	let msg = '';
@@ -22,11 +20,11 @@
 
 	let loading = false;
 	let elements = [
-		{ icon: 'planet-outline', name: 'Home', component: Main },
-		{ icon: 'compass-outline', name: 'Explore', component: Main },
-		{ icon: 'notifications-outline', name: 'Notifications', component: Main },
-		{ icon: 'chatbubbles-outline', name: 'Messages', component: Main },
-		{ icon: 'person-outline', name: 'Profile', component: Profile }
+		{ icon: 'planet-outline', name: 'Home', component: 'main' },
+		{ icon: 'compass-outline', name: 'Explore', component: 'Main' },
+		{ icon: 'notifications-outline', name: 'Notifications', component: 'Main' },
+		{ icon: 'chatbubbles-outline', name: 'Messages', component: 'Main' },
+		{ icon: 'person-outline', name: 'Profile', component: 'profile' }
 	];
 	function sleep(ms) {
 		return new Promise((resolve) => setTimeout(resolve, ms));
@@ -90,7 +88,7 @@
 
 	let screenWidth;
 
-	export let mainPage = Main;
+	// export let mainPage = Main;
 </script>
 
 <Toast bind:id bind:text={msg} />
@@ -111,10 +109,7 @@
 			{#each elements as element, i}
 				<a
 					value={element.component}
-					on:click={() => {
-						mainPage = element.component;
-					}}
-					href="./"
+					href="./home/{element.component}"
 					class=" mt- 1 group flex items-center px-2 py-2 text-base leading-10  font-roboto rounded-full bg-gray-800 text-white hover:text-blue-300"
 				>
 					<ion-icon class="mr-2 h-6 w-6 " name={element.icon} />

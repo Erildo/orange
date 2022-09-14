@@ -2,12 +2,12 @@
 	import { supabase } from '$lib/supabaseClient';
 
 	
-	import Toasting, { showToast } from './toast.svelte';
+	import Toasting, { showToast } from '../toast.svelte';
 
 	import { createEventDispatcher } from 'svelte';
-	import Audiolist from './audiolist.svelte';
-	import Image from './image.svelte';
-	import CreatePost from './createPost.svelte';
+	import Audiolist from '../audiolist.svelte';
+	import Image from '../image.svelte';
+	import CreatePost from '../createPost.svelte';
 	const dispatch = createEventDispatcher();
 
 	let postsArray = [];
@@ -28,6 +28,7 @@
 			console.log(error);
 		}
 	}
+
 </script>
 
 <main class="min-h-screen">
@@ -95,7 +96,7 @@
 									<div
 										class="font-roboto flex-1 flex items-center text-xs text-gray-400 hover:text-blue-400 transition duration-350 ease-in-out"
 									>
-										<a href="./post-{post.po_id}"
+										<a href="./home/post-{post.po_id}"
 											><ion-icon class="h-5 w-5 mr-2" name="chatbubble-outline" />
 										</a>
 										12.3 k
@@ -125,7 +126,7 @@
 				</li>
 				<li>
 					<article>
-						<!-- <Testing/> -->
+						
 					</article>
 				</li>
 			</ul>

@@ -1,11 +1,12 @@
 <script>
-	import Sidebar from '../sidebar.svelte';
+
 	import { page } from '$app/stores';
-	import Trends from '../trends.svelte';
-	import Image from '../image.svelte';
+	import { goto } from '$app/navigation';
+
+	import Image from '../../image.svelte';
 	import { supabase } from '$lib/supabaseClient';
-	import {getUser} from '../user'
-import CreatePost from '../createPost.svelte';
+	import { user } from '$lib/sessionStore'
+	import Comment from './_comment.svelte';
 	const id = $page.params.id;
 	let thisPage;
 	let postArray = [];
@@ -16,21 +17,16 @@ import CreatePost from '../createPost.svelte';
 			if (error) throw error;
 			if (data) {
 				postArray = data;
-				console.log(data);
 			}
 		} catch (error) {
 			console.log(error);
 		}
 	}
 	let tweet = '';
-	
+	const goSomeWhereBack = () => {
+    goto($page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/')));
+}
 </script>
-
-<div class="p-relative  bg-black">
-	<div class="flex justify-center">
-		<header class="text-white  h-12 py-4 h-auto">
-			<Sidebar bind:mainPage={thisPage} />
-		</header>
 
 		<main class="min-h-screen" use:getPost>
 			<div class="flex w-full">
@@ -39,7 +35,7 @@ import CreatePost from '../createPost.svelte';
 						<div class="flex-1 mx-2">
 							
 							<h2 class="px-4 py-2 text-xl font-semibold text-white font-roboto">
-								<ion-icon name="arrow-back-outline" class="mr-2 h-4 w-6" />
+							<a  on:click={goSomeWhereBack} href="./"><ion-icon name="arrow-back-outline" class="mr-2 h-4 w-6" /></a>
 								Comment</h2>
 						</div>
 					</div>
@@ -110,13 +106,9 @@ import CreatePost from '../createPost.svelte';
 							<hr class="border-gray-800" />
 						</article>
 					{/each}
-					<CreatePost />
+					<Comment />
 				</section>
 			</div>
 		</main>
 
-		<div class="hidden md:block flex w-[300px]">
-			<Trends />
-		</div>
-	</div>
-</div>
+		
