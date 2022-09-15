@@ -5,6 +5,7 @@
 	import Toast, { showToast } from '../components/toast.svelte';
 	import SmNav from '../components/smNav.svelte';
 	import { element } from 'svelte/internal';
+	import Speak from './speak.svelte';
 	
 	let showCreate;
 	let user_name, name, picture;
@@ -90,7 +91,7 @@
 
 	let screenWidth;
 
-	// export let mainPage = Main;
+	
 </script>
 
 <Toast bind:id bind:text={msg} />
@@ -124,6 +125,7 @@
 			>
 				Tweet
 			</button>
+			<Speak/>
 		</nav>
 
 		<!-- User Menu -->

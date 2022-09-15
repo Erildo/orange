@@ -31,7 +31,7 @@
 							href="./"
 							class=" text-2xl font-medium rounded-full text-white hover:bg-gray-800 hover:text-blue-300 float-right"
 						>
-							<ion-icon class="w-6 h-6" name="planet-sharp" />
+							<ion-icon class="w-6 h-6 hover:animate-spin" name="planet-sharp" />
 						</a>
 					</div>
 				</div>

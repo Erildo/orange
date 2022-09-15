@@ -132,14 +132,15 @@
 					blob = new Blob(chunks, { type: 'audio/ogg; codecs-opus' });
 					audioURL = URL.createObjectURL(blob);
 					chunks = [];
-
-					recordings = [
-						...recordings,
-						{
-							title: clipName,
-							audio: audioURL
-						}
-					];
+					if (recordings.length < 1) {
+						recordings = [
+							...recordings,
+							{
+								title: clipName,
+								audio: audioURL
+							}
+						];
+					}
 				};
 			})
 			.catch((err) => {
@@ -164,10 +165,10 @@
 		recordings = recordings.filter((i) => i !== item);
 	}
 	function blueColor() {
-		tweet = tweet.replace(/(^|\s)(#\w+)/g, " <a href=#>$2</a>").replace("<br>", ""); 
+		tweet = tweet.replace(/(^|\s)(#\w+)/g, ' <a href=#>$2</a>').replace('<br>', '');
 
 		var savedSel = sel.saveCharacterRanges(tweet);
-          tweet = sel.restoreCharacterRanges(this, savedSel);
+		tweet = sel.restoreCharacterRanges(this, savedSel);
 	}
 </script>
 
@@ -212,15 +213,6 @@
 				>
 			</div>
 		{/if}
-		{#if recordings.length > 0}
-			{#each recordings as recording, i}
-				<Audiolist
-					title={i + 1 + ': ' + recording.title}
-					audio={recording.audio}
-					on:deleterecording={() => deleteRecording(recording)}
-				/>
-			{/each}
-		{/if}
 	</div>
 </div>
 <!--middle creat tweet below icons-->
@@ -263,26 +255,26 @@
 			</div>
 
 			<div class="flex-1 text-center mt-4 m-2">
-				<div class="wrapper">
-					{#if status === true}
-						<div class="circle-wrapper">
-							<div class="circle2" />
-						</div>
-
-						<div class="circle-wrapper">
-							<div class="circle1" />
-						</div>
-					{/if}
-					<a
-						class="btn hover:text-blue-300 {status === false ? 'text-blue-400 ' : 'text-blue-300'} "
-						href="./"
-						on:click={status === false ? record : stop}
-					>
-						<ion-icon class="h-7 w-7" name="mic-outline" />
-					</a>
-				</div>
+				<a
+					class="btn hover:text-red-300 {status === false ? 'text-blue-400 ' : 'text-red-300 animate-pulse'} "
+					href="./"
+					on:click={status === false ? record : stop}
+				>
+					<ion-icon class="h-7 w-7 " name="mic" />
+				</a>
 			</div>
-			<div class="flex-1 text-center py-2 m-2" />
+
+			<div class="flex-1 text-center mt-4 m-2">
+				{#if recordings.length > 0}
+					{#each recordings as recording, i}
+						<Audiolist
+							title={i + 1 + ': ' + recording.title}
+							audio={recording.audio}
+							on:deleterecording={() => deleteRecording(recording)}
+						/>
+					{/each}
+				{/if}
+			</div>
 		</div>
 	</div>
 
@@ -297,64 +289,3 @@
 </div>
 
 <hr class="border-gray-800 border-4" />
-
-<style>
-	.wrapper {
-		position: relative;
-
-		/*   background-color:red; */
-	}
-
-	.circle-wrapper {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-
-	.circle1 {
-		z-index: 0;
-		width: 100px;
-		height: 100px;
-		background: #bbadef;
-		border-radius: 100px;
-		animation: pulse 2s ease both infinite;
-	}
-
-	.circle2 {
-		z-index: 0;
-		width: 120px;
-		height: 120px;
-		background: #a596d8;
-		border-radius: 140px;
-		opacity: 0.6;
-		animation: pulse 2s ease both infinite;
-		animation-delay: 200ms;
-	}
-
-	@keyframes pulse {
-		0% {
-			transform: scale(0.5);
-			opacity: 0;
-		}
-		20% {
-			transform: scale(1);
-			opacity: 0.3;
-		}
-
-		50% {
-			transform: scale(0.5);
-			opacity: 0;
-		}
-
-		70% {
-			transform: scale(1);
-			opacity: 0.3;
-		}
-
-		100% {
-			transform: scale(0.5);
-			opacity: 0;
-		}
-	}
-</style>

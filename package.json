@@ -29,6 +29,8 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/supabase-js": "^1.35.6",
-		"svelte-emoji-picker": "^1.1.2"
+		"jquery": "^3.6.1",
+		"svelte-emoji-picker": "^1.1.2",
+		"svelte-time": "^0.7.1"
 	}
 }
