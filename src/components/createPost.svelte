@@ -3,6 +3,7 @@
 	import Toasting, { showToast } from './toast.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import Audiolist from './audiolist.svelte';
+	import TextStylingDiv from './textStylingDiv.svelte';
 	import { getUser } from './user';
 	import EmojiPicker from 'svelte-emoji-picker';
 	import Modal from './modal.svelte';
@@ -19,7 +20,7 @@
 	});
 
 	let showModal = false;
-	let tweet = '';
+	let tweet
 	let toastMessage = '';
 	let po_storage, image;
 
@@ -182,28 +183,9 @@
 		{#if status === true}
 			<span class="text-blue-300">Recording...</span>
 		{/if}
-		<div
-			contenteditable="true"
-			bind:innerHTML={tweet}
-			on:input={blueColor}
-			class="block p-2.5 w-full h-24
-					rounded-lg border text-white focus:outline-none focus:ring
-					bg-gray-700 border-gray-600 placeholder-gray-400
-					hover:border-blue-600"
-			placeholder="What's happening..."
-			maxlength="200"
-		/>
-
-		<!-- <textarea
-			rows="3"
-			bind:value={tweet}
-			class="block p-2.5 w-full 
-            rounded-lg border text-white focus:outline-none focus:ring
-            bg-gray-700 border-gray-600 placeholder-gray-400
-            hover:border-blue-600"
-			placeholder="What's happening..."
-			maxlength="200"
-		/> -->
+		<TextStylingDiv bind:text={tweet}/>
+		
+	
 		{#if avatar}
 			<div class="relative">
 				<img class="w-full" src={avatar} alt="uploaded" />

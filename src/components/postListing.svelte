@@ -3,6 +3,7 @@
 	import Image from '../components/image.svelte';
 	import Time, { svelteTime } from 'svelte-time';
 	import ColorHash from './colorHash.svelte';
+	import Likes from './likes.svelte';
 
 	export let postsArray = [];
 	// async function getPosts() {
@@ -119,12 +120,7 @@
 							</svg>
 							14 k
 						</div>
-						<div
-							class="flex-1 flex items-center text-white text-xs text-gray-400 hover:text-red-600 transition duration-350 ease-in-out"
-						>
-							<ion-icon class="h-5 w-5 mr-2" name="heart-outline" />
-							15 k
-						</div>
+						<Likes bind:item={post.po_id}/>
 						<div
 							class="flex-1 flex items-center text-white text-xs text-gray-400 hover:text-blue-400 transition duration-350 ease-in-out"
 						>
