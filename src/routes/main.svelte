@@ -37,10 +37,10 @@
 				</div>
 
 				<hr class="border-gray-800" />
-				<CreatePost />
+				<CreatePost table="posts" postID="0"/>
 			</aside>
 			<div use:getPosts>
-				<PostListing bind:postsArray={allPosts} />
+				<PostListing bind:postsArray={allPosts} table="posts"/>
 			</div>
 		</section>
 	</div>

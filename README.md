@@ -1,38 +1,15 @@
-# create-svelte
+# Orange ![mn](https://progress-bar.dev/60/?title=completed)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+An open source social network for visually impaired people!
+![me](https://public-media.interaction-design.org/images/uploads/49cc66880bd19f638136237261b1066e.jpg)
+## Developer contribution
 
-## Creating a project
+```python
+Pull requests and forks are welcome,
+please before adding any big feature open a thread in discussion first!
 
-If you're seeing this, you've probably already done this step. Congrats!
+# returns for your contribution
+If we ever decide to go live and commercial,
+you will be rewarded $ = amount of impact(%) / number of developers
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

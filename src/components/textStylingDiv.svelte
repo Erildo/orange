@@ -3,33 +3,31 @@
 	import { tick } from 'svelte';
 
 	export let text;
+	export let id;
 	let div, html;
 
-		$: (async () => {
+	// $: (async () => {
 
-			// if (!window.rangy) return;
-			// let sel = rangy.getSelection();
-			// let savedSel = sel.saveCharacterRanges(div);
-			// html = text.replace(/(^|\s)(#\w+)/g, " <span class='text-blue-300'>$2</span>");
-			// await tick();
-			// sel.restoreCharacterRanges(div, savedSel);
-            
+	// 	// if (!window.rangy) return;
+	// 	// let sel = rangy.getSelection();
+	// 	// let savedSel = sel.saveCharacterRanges(div);
+	// 	// html = text.replace(/(^|\s)(#\w+)/g, " <span class='text-blue-300'>$2</span>");
+	// 	// await tick();
+	// 	// sel.restoreCharacterRanges(div, savedSel);
 
-		})();
-
+	// })();
 </script>
-<div
- id="test" 
-	bind:this={div}
-	bind:innerHTML={html}
-	bind:textContent={text}
-    
+
+<textarea
+	id={id}
+	bind:value={text}
 	contenteditable="true"
-	class="post-input-field  block p-2.5 w-full h-24
+	class="resize-none post-input-field  block p-2.5 w-full h-24
             rounded-lg border text-white focus:outline-none focus:ring
             bg-gray-700 border-gray-600 placeholder-gray-400
             hover:border-blue-600"
-	style="display: flex;
-    "
-> Whats up
-</div>
+	style="display: flex;"
+	placeholder="Whats up?"
+	maxlength="260"
+/>
+

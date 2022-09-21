@@ -53,6 +53,7 @@
 				user_name = data[0].user_name 
 				name = data[0].name
 				picture = data[0].picture
+				// console.log(data)
 			}
 		} catch (error) {
 			console.log(error);
@@ -174,11 +175,11 @@
 									/>
 								</button>
 							</div>
-							<p
+							<a href= "./profile-{user_name}"
 								class="text-sm leading-5 font-medium text-gray-400  transition ease-in-out duration-150"
 							>
 								@{user_name}
-							</p>
+						</a>
 						</div>
 					</div>
 				</a>
