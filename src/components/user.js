@@ -13,3 +13,16 @@ export async function getUser(userid){
         console.log(error);
     }
 }
+export async function getUser2(username){
+    try {
+        let { data, error, status } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('user_name', username);
+
+        if (error) throw error;
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -239,14 +239,14 @@
 	<div class="w-64 px-2">
 		<div class="flex items-center">
 			<div class="flex-1 text-center px-1 py-1 m-2">
-				<p
+				<a href=""
 					on:click={() => {
 						fileinput.click();
 					}}
 					class="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-gray-800 hover:text-blue-300"
 				>
 					<ion-icon class="h-7 w-7" name="image-outline" />
-				</p>
+				</a>
 				<input
 					style="display:none"
 					type="file"
@@ -261,12 +261,12 @@
 				</Modal>
 			{/if}
 			<div class="flex-1 text-center py-2 m-2">
-				<p
+				<a href=""
 					on:click={() => (showModal = !showModal)}
 					class="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-gray-800 hover:text-blue-300"
 				>
 					<ion-icon class="h-7 w-7" name="happy-outline" />
-				</p>
+			</a>
 			</div>
 
 			<!-- <div class="flex-1 text-center mt-4 m-2">
